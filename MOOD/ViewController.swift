@@ -23,9 +23,10 @@ class ViewController: UIViewController {
     ]
     
     
+    @IBOutlet weak var topButtons: UIView!
     @IBOutlet weak var viewFollowing: UIView!
     @IBOutlet weak var viewPopular: UIView!
-    @IBOutlet weak var tableViewFollowing: UITableView!
+    //@IBOutlet weak var tableViewFollowing: UITableView!
     
     @IBOutlet weak var collectionViewFollowing: UICollectionView!
     @IBOutlet weak var tableViewPopular: UITableView!
@@ -34,6 +35,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        topButtons.layer.cornerRadius = 12
+        topButtons.clipsToBounds = true
         
         collectionViewFollowing.register(UINib(nibName: "FollowingCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FollowingCell")
         
@@ -50,7 +54,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnPopular(_ sender: Any) {
         viewFollowing.isHidden = true
-        viewPopular.isHidden = false
+        viewPopular.isHidden  = false
     }
     
 }
@@ -68,6 +72,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: "PopularCell", for: indexPath) as! PopularTableViewCell
+        //tableViewPopular.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         let x = myPopular[indexPath.row]
         cell.configure(data: x)
         return cell
@@ -91,12 +96,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         cell.Configure(data: data)
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width = 152
-//        let height = 213
-//        return CGSize(width: width, height: height)
-//    }
     
     
 }

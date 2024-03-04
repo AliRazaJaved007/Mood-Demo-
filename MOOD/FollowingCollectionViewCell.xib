@@ -56,7 +56,7 @@
                 <outlet property="imgFollowing" destination="T33-5n-4Pt" id="8JI-sC-iQb"/>
                 <outlet property="lblTitle" destination="lg3-zL-4Xk" id="gsS-Tu-n74"/>
             </connections>
-            <point key="canvasLocation" x="13.740458015267174" y="7.042253521126761"/>
+            <point key="canvasLocation" x="13.18359375" y="6.8081991215226934"/>
         </collectionViewCell>
     </objects>
     <resources>
