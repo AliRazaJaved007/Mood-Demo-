@@ -22,17 +22,18 @@ class ViewController: UIViewController {
         Following(imageFollowing: "dd", labelTitle: "Subhan")
     ]
     
+    let myDiscover: [Discover] = [
+        Discover(imageMain: "aa", imageLeft: "aa", imageRight: "aa", labelTitle: "Beer & Pool", labelDate: "Sat, 15 August • 13:00", labelDescription: "Biljardpalatset 112 34 Stockholm", labelColor: "Pool", image1: "aa", image2: "aa", image3: "aa"),
+        Discover(imageMain: "bb", imageLeft: "bb", imageRight: "bb", labelTitle: "Photo Session", labelDate: "Sat, 1 January • 16:00", labelDescription: "HL Gallery (Place)", labelColor: "Exhibition", image1: "bb", image2: "bb", image3: "bb"),
+        Discover(imageMain: "cc", imageLeft: "cc", imageRight: "cc", labelTitle: "Basketball", labelDate: "Tue, 30 November • 11:30", labelDescription: "Kalmgatan 44, 11320 Stockholm", labelColor: "Basketball", image1: "cc", image2: "cc", image3: "cc")
+    ]
     
     @IBOutlet weak var topButtons: UIView!
-    @IBOutlet weak var viewFollowing: UIView!
-    @IBOutlet weak var viewPopular: UIView!
-    //@IBOutlet weak var tableViewFollowing: UITableView!
-    
-    @IBOutlet weak var collectionViewFollowing: UICollectionView!
+    @IBOutlet weak var tableViewDiscover: UITableView!
     @IBOutlet weak var tableViewPopular: UITableView!
     
-    //var image = ["dd"]
-
+    @IBOutlet weak var collectionViewFollowing: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,43 +43,72 @@ class ViewController: UIViewController {
         collectionViewFollowing.register(UINib(nibName: "FollowingCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FollowingCell")
         
         tableViewPopular.register(UINib(nibName: "PopularTableViewCell", bundle: nil), forCellReuseIdentifier: "PopularCell")
-                
-        viewFollowing.isHidden = false
-        viewPopular.isHidden = true
+        tableViewDiscover.register(UINib(nibName: "DiscoverTableViewCell", bundle: nil), forCellReuseIdentifier: "DiscoverCell")
+        
+        collectionViewFollowing.isHidden = true
+        tableViewPopular.isHidden = true
+        tableViewDiscover.isHidden = false
     }
     
     @IBAction func btnFollowing(_ sender: Any) {
-        viewFollowing.isHidden = false
-        viewPopular.isHidden = true
+        collectionViewFollowing.isHidden = false
+        tableViewPopular.isHidden = true
+        tableViewDiscover.isHidden = true
     }
     
     @IBAction func btnPopular(_ sender: Any) {
-        viewFollowing.isHidden = true
-        viewPopular.isHidden  = false
+        collectionViewFollowing.isHidden = true
+        tableViewPopular.isHidden  = false
+        tableViewDiscover.isHidden = true
     }
     
+    @IBAction func btnDiscover(_ sender: Any) {
+        collectionViewFollowing.isHidden = true
+        tableViewPopular.isHidden  = true
+        tableViewDiscover.isHidden = false
+    }
 }
 
+// MARK: - TableView for Popular Feed
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        if tableView == tableViewPopular{
+            return 3
+        } else if tableView == tableViewDiscover {
+            return 3
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myPopular.count
+        if tableView == tableViewPopular{
+            return myPopular.count
+        } else if tableView == tableViewDiscover {
+            return myDiscover.count
+        }
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: "PopularCell", for: indexPath) as! PopularTableViewCell
-        //tableViewPopular.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
-        let x = myPopular[indexPath.row]
-        cell.configure(data: x)
-        return cell
+        if tableView == tableViewPopular{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PopularCell", for: indexPath) as! PopularTableViewCell
+             let x = myPopular[indexPath.row]
+             cell.configure(data: x)
+             return cell
+        } else if tableView == tableViewDiscover {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath) as! DiscoverTableViewCell
+             let x = myDiscover[indexPath.row]
+             cell.configure(data: x)
+             return cell
+        }
+        return UITableViewCell()
+       
     }
-    
 }
+
+// MARK: - CollectionView for Following Feed
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -96,6 +126,4 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         cell.Configure(data: data)
         return cell
     }
-    
-    
 }
