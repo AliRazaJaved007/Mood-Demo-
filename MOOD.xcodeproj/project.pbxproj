@@ -114,8 +114,6 @@
 				BF14223E2B8EFD6A00F20FE3 /* Assets.xcassets */,
 				BF1422402B8EFD6A00F20FE3 /* LaunchScreen.storyboard */,
 				BF1422432B8EFD6A00F20FE3 /* Info.plist */,
-				BF14226F2B8F1A6D00F20FE3 /* XIB Files */,
-				BF1422702B8F1A9D00F20FE3 /* Cocoa Files */,
 				BF14227F2B8F824300F20FE3 /* PopularTableViewCell.swift */,
 				BF1422802B8F824300F20FE3 /* PopularTableViewCell.xib */,
 				BFADC5C22B90B413000C0CEB /* FollowingCollectionViewCell.swift */,
@@ -139,20 +137,6 @@
 				BF1422582B8EFD6B00F20FE3 /* MOODUITestsLaunchTests.swift */,
 			);
 			path = MOODUITests;
-			sourceTree = "<group>";
-		};
-		BF14226F2B8F1A6D00F20FE3 /* XIB Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "XIB Files";
-			sourceTree = "<group>";
-		};
-		BF1422702B8F1A9D00F20FE3 /* Cocoa Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Cocoa Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
