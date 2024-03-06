@@ -70,19 +70,11 @@ class DiscoverTableViewCell: UITableViewCell {
         
     }
     
-    func configure(data: Discover){
-        self.imgMain.image = UIImage(named: data.imageMain)
-        self.imgLeft.image = UIImage(named: data.imageLeft)
-        self.imgRight.image = UIImage(named: data.imageRight)
-        
-        self.lblTitle.text = data.labelTitle
-        self.lblDate.text = data.labelDate
-        self.lblDescription.text = data.labelDescription
-        self.lblColor.text = data.labelColor
-        
-        self.img1.image = UIImage(named: data.image1)
-        self.img2.image = UIImage(named: data.image2)
-        self.img3.image = UIImage(named: data.image3)
+    func configure(data: Diiscover){
+        self.imgMain.image = UIImage(named: data.activity_picture)
+        self.lblTitle.text = data.activity_title
+        self.lblDescription.text = data.activity_address
+        self.lblColor.text = data.activity_type
         
     }
     

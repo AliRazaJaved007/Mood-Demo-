@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableViewPopular: UITableView!
     
     @IBOutlet weak var collectionViewFollowing: UICollectionView!
+    var discoverData: [Diiscover] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,24 @@ class ViewController: UIViewController {
         collectionViewFollowing.isHidden = true
         tableViewPopular.isHidden = true
         tableViewDiscover.isHidden = false
+        
+        fetchData()
+    }
+    
+    func fetchData(){
+        NetworkManager.callingAPI{ [weak self] (data, error) in
+            guard let self = self else { return }
+            if let error = error {
+                print("Error fetching data: \(error)")
+                return
+            }
+            if let data = data {
+                self.discoverData = data
+                DispatchQueue.main.async {
+                    self.tableViewDiscover.reloadData()
+                }
+            }
+        }
     }
     
     @IBAction func btnFollowing(_ sender: Any) {
@@ -77,7 +96,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == tableViewPopular{
             return 3
         } else if tableView == tableViewDiscover {
-            return 3
+            return 1
         }
         return 0
     }
@@ -86,7 +105,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == tableViewPopular{
             return myPopular.count
         } else if tableView == tableViewDiscover {
-            return myDiscover.count
+            return discoverData.count
         }
         return 0
     }
@@ -99,8 +118,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
              return cell
         } else if tableView == tableViewDiscover {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath) as! DiscoverTableViewCell
-             let x = myDiscover[indexPath.row]
-             cell.configure(data: x)
+             let data = discoverData[indexPath.row]
+             cell.configure(data: data)
              return cell
         }
         return UITableViewCell()
