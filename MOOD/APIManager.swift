@@ -7,10 +7,6 @@
 
 import Foundation
 
-//struct DiiscoverResponse: Codable {
-//    let data: [Diiscover]
-//}
-
 class NetworkManager{
     static func callingAPI(completion: @escaping(DiscoverModel?, Error?) -> Void){
         guard let url = URL(string: Discover_url) else {
@@ -35,6 +31,12 @@ class NetworkManager{
             do {
                 let decoder = JSONDecoder()
                 let discoverResponse = try decoder.decode(DiscoverModel.self, from: data)
+//                let firstDiscoverId = discoverResponse.discoverFeeds.data.first?.id
+//                let firstDiscoverTitle = discoverResponse.discoverFeeds.data.first?.activity_title
+//                let firstDiscoverAddress = discoverResponse.discoverFeeds.data.first?.activity_address
+//                print("First Discover ID: \(firstDiscoverId)")
+//                print("First Discover ID: \(firstDiscoverTitle)")
+//                print("First Discover ID: \(firstDiscoverAddress)")
                 
                 completion(discoverResponse, nil)
             } catch {

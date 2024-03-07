@@ -112,8 +112,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
              return cell
         } else if tableView == tableViewDiscover {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath) as! DiscoverTableViewCell
-            let data = discoverData?.discoverFeeds.data[indexPath.row]
-//             cell.configure(data: data)
+            if let data = discoverData?.discoverFeeds.data[indexPath.row]{
+                cell.configure(data: data)
+            }
              return cell
         }
         return UITableViewCell()

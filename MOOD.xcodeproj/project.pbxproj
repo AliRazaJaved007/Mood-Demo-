@@ -25,6 +25,8 @@
 		BF9076F92B98AB0800BD0300 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9076F82B98AB0800BD0300 /* APIManager.swift */; };
 		BFADC5C42B90B413000C0CEB /* FollowingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFADC5C22B90B413000C0CEB /* FollowingCollectionViewCell.swift */; };
 		BFADC5C52B90B413000C0CEB /* FollowingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFADC5C32B90B413000C0CEB /* FollowingCollectionViewCell.xib */; };
+		BFC8D6F32B99F3B500D1F23C /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8D6F22B99F3B500D1F23C /* DateConverter.swift */; };
+		BFC8D6F52B99F3CE00D1F23C /* date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8D6F42B99F3CE00D1F23C /* date+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		BF9076F82B98AB0800BD0300 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BFADC5C22B90B413000C0CEB /* FollowingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingCollectionViewCell.swift; sourceTree = "<group>"; };
 		BFADC5C32B90B413000C0CEB /* FollowingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowingCollectionViewCell.xib; sourceTree = "<group>"; };
+		BFC8D6F22B99F3B500D1F23C /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		BFC8D6F42B99F3CE00D1F23C /* date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "date+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 				BF9076F42B98AAD300BD0300 /* DiscoverModel.swift */,
 				BF9076F62B98AAEC00BD0300 /* Constant.swift */,
 				BF9076F82B98AB0800BD0300 /* APIManager.swift */,
+				BFC8D6F22B99F3B500D1F23C /* DateConverter.swift */,
+				BFC8D6F42B99F3CE00D1F23C /* date+Ext.swift */,
 			);
 			path = MOOD;
 			sourceTree = "<group>";
@@ -292,9 +298,11 @@
 				BF14223A2B8EFD6700F20FE3 /* ViewController.swift in Sources */,
 				BF7A54CE2B96EFE2003DE8D9 /* DiscoverTableViewCell.swift in Sources */,
 				BF9076F92B98AB0800BD0300 /* APIManager.swift in Sources */,
+				BFC8D6F32B99F3B500D1F23C /* DateConverter.swift in Sources */,
 				BF9076F72B98AAEC00BD0300 /* Constant.swift in Sources */,
 				BF1422812B8F824300F20FE3 /* PopularTableViewCell.swift in Sources */,
 				BF1422362B8EFD6700F20FE3 /* AppDelegate.swift in Sources */,
+				BFC8D6F52B99F3CE00D1F23C /* date+Ext.swift in Sources */,
 				BF1422382B8EFD6700F20FE3 /* SceneDelegate.swift in Sources */,
 				BF9076F52B98AAD300BD0300 /* DiscoverModel.swift in Sources */,
 			);
