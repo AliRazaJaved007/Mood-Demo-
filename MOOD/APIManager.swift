@@ -7,8 +7,12 @@
 
 import Foundation
 
+//struct DiiscoverResponse: Codable {
+//    let data: [Diiscover]
+//}
+
 class NetworkManager{
-    static func callingAPI(completion: @escaping([Diiscover]?, Error?) -> Void){
+    static func callingAPI(completion: @escaping(DiscoverModel?, Error?) -> Void){
         guard let url = URL(string: Discover_url) else {
             completion(nil, NSError(domain: "InvalidURL", code: 0, userInfo: nil))
             return
@@ -26,11 +30,12 @@ class NetworkManager{
                 completion(nil, NSError(domain: "NoData", code: 0, userInfo: nil))
                 return
             }
-            var stringData = String(data: data, encoding: .utf8)
-            print(stringData)
+//            var stringData = String(data: data, encoding: .utf8)
+//            print(stringData)
             do {
                 let decoder = JSONDecoder()
-                let discoverResponse = try decoder.decode([Diiscover].self, from: data)
+                let discoverResponse = try decoder.decode(DiscoverModel.self, from: data)
+                
                 completion(discoverResponse, nil)
             } catch {
                 completion(nil, error)

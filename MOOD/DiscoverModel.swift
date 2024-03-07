@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Diiscover: Codable {
-    let activity_picture: String
-    let activity_title: String
-    let activity_description: String
-    let activity_address: String
-    let activity_type: String
+struct DiscoverModel: Codable {
+    let discoverFeeds: DiscoverFeed
+
+    enum CodingKeys: String, CodingKey {
+        case discoverFeeds = "discover_feeds"
+    }
 }

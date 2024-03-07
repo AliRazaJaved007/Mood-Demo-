@@ -22,18 +22,12 @@ class ViewController: UIViewController {
         Following(imageFollowing: "dd", labelTitle: "Subhan")
     ]
     
-    let myDiscover: [Discover] = [
-        Discover(imageMain: "aa", imageLeft: "aa", imageRight: "aa", labelTitle: "Beer & Pool", labelDate: "Sat, 15 August • 13:00", labelDescription: "Biljardpalatset 112 34 Stockholm", labelColor: "Pool", image1: "aa", image2: "aa", image3: "aa"),
-        Discover(imageMain: "bb", imageLeft: "bb", imageRight: "bb", labelTitle: "Photo Session", labelDate: "Sat, 1 January • 16:00", labelDescription: "HL Gallery (Place)", labelColor: "Exhibition", image1: "bb", image2: "bb", image3: "bb"),
-        Discover(imageMain: "cc", imageLeft: "cc", imageRight: "cc", labelTitle: "Basketball", labelDate: "Tue, 30 November • 11:30", labelDescription: "Kalmgatan 44, 11320 Stockholm", labelColor: "Basketball", image1: "cc", image2: "cc", image3: "cc")
-    ]
-    
     @IBOutlet weak var topButtons: UIView!
     @IBOutlet weak var tableViewDiscover: UITableView!
     @IBOutlet weak var tableViewPopular: UITableView!
     
     @IBOutlet weak var collectionViewFollowing: UICollectionView!
-    var discoverData: [Diiscover] = []
+    var discoverData: DiscoverModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +99,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == tableViewPopular{
             return myPopular.count
         } else if tableView == tableViewDiscover {
-            return discoverData.count
+            return discoverData?.discoverFeeds.data.count ?? 0
         }
         return 0
     }
@@ -118,8 +112,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
              return cell
         } else if tableView == tableViewDiscover {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath) as! DiscoverTableViewCell
-             let data = discoverData[indexPath.row]
-             cell.configure(data: data)
+            let data = discoverData?.discoverFeeds.data[indexPath.row]
+//             cell.configure(data: data)
              return cell
         }
         return UITableViewCell()
@@ -129,7 +123,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - CollectionView for Following Feed
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 10

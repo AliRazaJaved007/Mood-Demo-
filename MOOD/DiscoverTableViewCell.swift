@@ -7,17 +7,23 @@
 
 import UIKit
 
-struct Discover {
-    let imageMain: String
-    let imageLeft: String
-    let imageRight: String
-    let labelTitle: String
-    let labelDate: String
-    let labelDescription: String
-    let labelColor: String
-    let image1: String
-    let image2: String
-    let image3: String
+struct DiscoverFeed: Codable {
+    let current_page: Int
+    let data: [Discover]
+    let first_page_url: String
+    let from: Int
+    let last_page: Int
+    let last_page_url: String
+    var next_page_url: String?
+    let path: String
+    let per_page: Int
+    var prev_page_url: String?
+    let to: Int
+    let total: Int
+}
+
+struct Discover: Codable {
+    var id: Int?
 }
 
 class DiscoverTableViewCell: UITableViewCell {
@@ -70,13 +76,13 @@ class DiscoverTableViewCell: UITableViewCell {
         
     }
     
-    func configure(data: Diiscover){
-        self.imgMain.image = UIImage(named: data.activity_picture)
-        self.lblTitle.text = data.activity_title
-        self.lblDescription.text = data.activity_address
-        self.lblColor.text = data.activity_type
-        
-    }
+//    func configure(data: Diiscover) {
+//        self.imgMain.image = UIImage(named: data.activity_picture)
+//        self.lblTitle.text = data.activity_title
+//        self.lblDescription.text = data.activity_address
+//        self.lblColor.text = data.activity_type
+//        
+//    }
     
 
     override func setSelected(_ selected: Bool, animated: Bool) {
