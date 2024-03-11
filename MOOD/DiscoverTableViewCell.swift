@@ -24,10 +24,6 @@ struct DiscoverFeed: Codable {
 
 struct Discover: Codable {
     var id: Int?
-    var activity_title: String?
-    var activity_address: String?
-    var activity_picture: String?
-    var created_at: String?
 }
 
 class DiscoverTableViewCell: UITableViewCell {
@@ -80,19 +76,14 @@ class DiscoverTableViewCell: UITableViewCell {
         
     }
     
-    func configure(data: Discover) {
-        if let title = data.activity_title {
-            self.lblTitle.text = title
-        }
-        if let address = data.activity_address {
-            self.lblDescription.text = address
-        }
-        if let time = data.created_at?.convertToDisplayFormat() {
-            self.lblDate.text = time
-        }
-        
-
-    }
+//    func configure(data: Diiscover) {
+//        self.imgMain.image = UIImage(named: data.activity_picture)
+//        self.lblTitle.text = data.activity_title
+//        self.lblDescription.text = data.activity_address
+//        self.lblColor.text = data.activity_type
+//        
+//    }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
